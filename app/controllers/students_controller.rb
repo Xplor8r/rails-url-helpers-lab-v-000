@@ -10,13 +10,10 @@ class StudentsController < ApplicationController
   end
 
 
-  def set_student
-    @student = Student.find(params[:id])
-  end
 
   def activate
-    set_student
-    @student = !!@student.active
+    @student = Student.find(params[:id])
+    !!@student.active
     @student.save
     redirect_to student_path(@student)
   end
